@@ -1,0 +1,9 @@
+Lab1.exe:	main.cs IntegerSet.dll
+	csc /t:exe /out:Lab1.exe main.cs /r:IntegerSet.dll
+
+IntegerSet.dll: IntegerSet.cs
+	csc /t:library /out:IntegerSet.dll IntegerSet.cs
+
+clean:
+	del *.dll
+	del *.exe
