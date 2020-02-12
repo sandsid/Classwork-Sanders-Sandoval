@@ -1,14 +1,16 @@
+using System;
+
 namespace Set
 {
    public class IntegerSet
     {
         bool[] arr;
 
-        IntegerSet()
+        public IntegerSet()
         {
             arr = new bool[51];
         }
-        IntegerSet(int[] arr_int)
+        public IntegerSet(int[] arr_int)
         {
             
             foreach(int i in arr_int)
@@ -18,14 +20,17 @@ namespace Set
                     arr[i] = true;
                 }
                 else 
-                    Syste.Console.WriteLine("Number not 0-50");
+                    System.Console.WriteLine("Number not 0-50");
             }
         }
-        void EmptySet()
+        public void EmptySet()
         {
-            Arrays.filed(arr, false);
+            for(int i = 0; i < arr.Length; i++)
+            {
+                arr[i] = false;
+            }
         }
-        void InsertElements(int[] arr_int)
+        public void InsertElements(int[] arr_int)
         {
             foreach(int i in arr_int)
             {
@@ -34,31 +39,32 @@ namespace Set
                     arr[i] = true;
                 }
                 else 
-                    Syste.Console.WriteLine("Number not 0-50");
+                    System.Console.WriteLine("Number not 0-50");
             }
         }
-        void InsertElement(int n)
+        public void InsertElement(int n)
         {
                 if(n >= 0 && n < 51)
                 {
                     arr[n] = true;
                 }
                 else 
-                    Syste.Console.WriteLine("Number not 0-50");
+                    System.Console.WriteLine("Number not 0-50");
         }
-        void DeleteElement(int n)
+        public void DeleteElement(int n)
         {
                 if(n >= 0 && n < 51)
                 {
                     arr[n] = false;
                 }
                 else 
-                    Syste.Console.WriteLine("Number not 0-50");
+                    System.Console.WriteLine("Number not 0-50");
         }
-        void InputSet()
+        /*
+        public void InputSet()
         {
             int i = 0;
-            while(System.Console.ReadLine() != \n)
+            while(System.Console.ReadLine() != '\n')
             {
                 System.Console.WriteLine("Enter an Element (Enter to End): ");
                 arr[i] = int.Parse(System.Console.ReadLine());
@@ -67,6 +73,7 @@ namespace Set
 
     
         }
+        
         IntegerSet Union(IntegerSet b)
         {
 
@@ -75,7 +82,7 @@ namespace Set
         {
 
         }
-        bool Equals()
+        public bool Equals()
         {
 
         }
@@ -87,6 +94,7 @@ namespace Set
         {
 
         }
+        */
         
     } 
 }
