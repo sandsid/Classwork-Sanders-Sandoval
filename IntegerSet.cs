@@ -1,5 +1,5 @@
 using System;
-
+using System.Linq;
 namespace Set
 {
    public class IntegerSet
@@ -12,7 +12,9 @@ namespace Set
         }
         public IntegerSet(int[] arr_int)
         {
-            
+
+            arr = new bool[51];
+
             foreach(int i in arr_int)
             {
                 if(i >= 0 && i < 51)
@@ -60,41 +62,126 @@ namespace Set
                 else 
                     System.Console.WriteLine("Number not 0-50");
         }
-        /*
+        
         public void InputSet()
         {
             int i = 0;
-            while(System.Console.ReadLine() != '\n')
+            string line = "";
+            bool keyEnter = false;
+         
+            do
             {
-                System.Console.WriteLine("Enter an Element (Enter to End): ");
-                arr[i] = int.Parse(System.Console.ReadLine());
-                i = i + 1;
-            }  
-
-    
+                System.Console.Write("Enter an Element (Enter to End): ");
+                line = System.Console.ReadLine();
+                
+                if (string.IsNullOrEmpty(line))
+                {
+                    keyEnter=true;
+                }
+                else
+                {
+                    i = int.Parse(line);
+                    arr[i] = true;
+                }
+            }while(keyEnter == false);
         }
         
-        IntegerSet Union(IntegerSet b)
+        public IntegerSet Union(IntegerSet b)
         {
+            int[] indexes = new int[51];
+            int j = 0;
+            for(int i = 0; i < 51; i++)
+            {
+                if((this.arr[i] == true) ||(b.arr[i] == true))
+                {
+                    indexes[j] = i;
+                    j++;
+                }
+
+            }
+            IntegerSet c = new IntegerSet(indexes);
+            return c;
+        }
+        public IntegerSet Intersection(IntegerSet b)
+        {
+            int[] indexes = new int[51];
+            int j = 0;
+
+            for(int i = 0; i < 51; i++)
+            {
+                if((this.arr[i] == true) && (b.arr[i] == true))
+                {
+                    indexes[j] = i;
+                    
+                    //System.Console.WriteLine(indexes[j]);
+                    j++;
+
+                } 
+            }
+
+            IntegerSet c = new IntegerSet(indexes);
+            return c;
+        }
+        
+        public override bool Equals(Object obj)
+        {
+            if((obj == null) || (!(obj is IntegerSet)))
+            {
+                return false;
+            }
+            IntegerSet other = (IntegerSet)obj;
+            bool same = true;
+            int i = 0;
+
+            do
+            {
+                if(this.arr[i] != other.arr[i])
+                {
+                    same = false;
+                }
+                i++;
+            } while (i < 51 && same == true);
+
+            return same;
 
         }
-        void Intersection(IntegerSet b)
+        
+        public override int GetHashCode()
         {
-
+            return this.GetHashCode();
         }
-        public bool Equals()
+        
+        public override string ToString()
         {
+            int[] indexes = new int[51];
+            int j = 0;
+            for(int i = 0; i < 51; i++)
+            {
+                if(this.arr[i] == true)
+                {
+                    indexes[j] = i;
+                    //System.Console.WriteLine(indexes[j]);
+                    j++;
+                }
+            }
 
-        }
-        GetHashCode()
-        {
+            int[] new_index = new int[j];
 
-        }
-        string ToString()
-        {
+            for(int l = 0; l < j; l++)
+            {
+                new_index[l] = indexes[l];
+            }
 
+            string ids = String.Join(", ", new_index.Select(q=>q.ToString()).ToArray());
+
+            if(j == 0)
+            {
+                return "{ <empty> }";
+            }
+            else
+                return $"{{ {ids} }}";
         }
-        */
+        
         
     } 
 }
