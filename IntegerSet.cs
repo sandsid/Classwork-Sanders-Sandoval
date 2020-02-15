@@ -11,19 +11,19 @@ namespace Set
             arr = new bool[51];
         }
         public IntegerSet(int[] arr_int)
-        {
-
+        { 
             arr = new bool[51];
 
             foreach(int i in arr_int)
             {
-                if(i >= 0 && i < 51)
+                if(i > -1 && i < 51)
                 {
                     arr[i] = true;
                 }
                 else 
                     System.Console.WriteLine("Number not 0-50");
             }
+
         }
         public void EmptySet()
         {
@@ -34,6 +34,7 @@ namespace Set
         }
         public void InsertElements(int[] arr_int)
         {
+
             foreach(int i in arr_int)
             {
                 if(i >= 0 && i < 51)
@@ -81,7 +82,12 @@ namespace Set
                 else
                 {
                     i = int.Parse(line);
-                    arr[i] = true;
+                    if(i >= 0 && i < 51)
+                    {
+                        arr[i] = true;
+                    }
+                    else 
+                        System.Console.WriteLine("Number not 0-50");
                 }
             }while(keyEnter == false);
         }
@@ -112,10 +118,7 @@ namespace Set
                 if((this.arr[i] == true) && (b.arr[i] == true))
                 {
                     indexes[j] = i;
-                    
-                    //System.Console.WriteLine(indexes[j]);
                     j++;
-
                 } 
             }
 
@@ -160,7 +163,6 @@ namespace Set
                 if(this.arr[i] == true)
                 {
                     indexes[j] = i;
-                    //System.Console.WriteLine(indexes[j]);
                     j++;
                 }
             }

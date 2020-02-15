@@ -8,13 +8,13 @@ namespace MainApp
     {
         static void Main()
         {
-            int[] a_arr = new int[] { 5 ,9, 11, 21, 29};
+            int[] a_arr = new int[] { 3 ,4, 11, 21, 29};
 
             IntegerSet a_set = new IntegerSet(a_arr);
 
             C.WriteLine(a_set);
 
-            int[] b_arr = new int[] {7, 2, 3, 4};
+            int[] b_arr = new int[] {1, 2, 3, 4};
 
             IntegerSet b_set = new IntegerSet(b_arr);
             C.WriteLine(b_set);
@@ -24,7 +24,7 @@ namespace MainApp
 
             IntegerSet a_in_b = a_set.Intersection(b_set);
             C.WriteLine(a_in_b);
-
+            
             a_set.InsertElement(33);
             C.WriteLine(a_set);
 
@@ -38,6 +38,7 @@ namespace MainApp
 
             a_set.EmptySet();
             C.WriteLine(a_set);
+            
 
 
 
