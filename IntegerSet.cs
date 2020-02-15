@@ -1,5 +1,6 @@
-//Integer set file 
-
+//Integer set file creating IntegerSet class
+//Authors: Sidney Sanders, Lian Sandoval
+//2-14-2020
 
 using System;
 using System.Linq;
